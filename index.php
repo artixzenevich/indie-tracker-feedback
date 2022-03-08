@@ -1,12 +1,12 @@
 <?php
-require_once 'vendor/autoload.php';
+//require_once 'vendor/autoload.php';
 
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
 require 'phpmailer/Exception.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+//$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+//$dotenv->load();
 
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -31,14 +31,14 @@ try {
 
     // Настройки вашей почты
     $mail->Host       = 'smtp.yandex.ru'; // SMTP сервера вашей почты
-    $mail->Username   = $_ENV['USERNAME']; // Логин на почте
-    $mail->Password   = $_ENV['PASSWORD']; // Пароль на почте
+    $mail->Username   = getenv('USERNAME'); // Логин на почте
+    $mail->Password   = getenv('PASSWORD'); // Пароль на почте
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
-    $mail->setFrom($_ENV['EMAIL'], $name); // Адрес самой почты и имя отправителя
+    $mail->setFrom(getenv('EMAIL'), $name); // Адрес самой почты и имя отправителя
 
     // Получатель письма
-    $mail->addAddress($_ENV['EMAIL']);  
+    $mail->addAddress(getenv('EMAIL'));  
  
 
     $mail->isHTML(true);
