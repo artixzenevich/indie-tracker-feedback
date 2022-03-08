@@ -5,6 +5,7 @@ require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
 require 'phpmailer/Exception.php';
 
+// Для деплоя на хероку такой способ не подходит
 //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 //$dotenv->load();
 
